@@ -43,10 +43,11 @@ import java.io.File;
 import javax.swing.JTable;
 import javax.swing.ImageIcon;
 
-public class MenjacncicaGUI extends JFrame {
+public class MenjacnicaGUI extends JFrame {
 
 	private JPanel contentPane;
 	private JTable table;
+	private JTextArea textArea = new JTextArea();
 
 	/**
 	 * Launch the application.
@@ -55,7 +56,7 @@ public class MenjacncicaGUI extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MenjacncicaGUI frame = new MenjacncicaGUI();
+					MenjacnicaGUI frame = new MenjacnicaGUI();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -67,7 +68,7 @@ public class MenjacncicaGUI extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public MenjacncicaGUI() {
+	public MenjacnicaGUI() {
 		
 		addWindowListener(new WindowAdapter() {
 			@Override
@@ -76,7 +77,7 @@ public class MenjacncicaGUI extends JFrame {
 			}
 		});
 		
-		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacncicaGUI.class.getResource("/icons/Ikona.jpg")));
+		setIconImage(Toolkit.getDefaultToolkit().getImage(MenjacnicaGUI.class.getResource("/icons/Ikona.jpg")));
 		setTitle("Menjacnica");
 		setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		setBounds(100, 100, 675, 490);
@@ -89,10 +90,8 @@ public class MenjacncicaGUI extends JFrame {
 		scrollPane.setBorder(new TitledBorder(null, "STATUS", TitledBorder.LEADING, TitledBorder.TOP, null, null));
 		contentPane.add(scrollPane, BorderLayout.SOUTH);
 		
-		JTextArea textArea = new JTextArea();
 		textArea.setLineWrap(true);
 		scrollPane.setViewportView(textArea);
-		
 		
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -114,7 +113,7 @@ public class MenjacncicaGUI extends JFrame {
 		});
 		
 		
-		mntmOpen.setIcon(new ImageIcon(MenjacncicaGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/directory.gif")));
+		mntmOpen.setIcon(new ImageIcon(MenjacnicaGUI.class.getResource("/javax/swing/plaf/metal/icons/ocean/directory.gif")));
 		mntmOpen.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_O, InputEvent.CTRL_MASK));
 		mnFile.add(mntmOpen);
 		
@@ -129,7 +128,7 @@ public class MenjacncicaGUI extends JFrame {
 				}
 			}
 		});
-		mntmSave.setIcon(new ImageIcon(MenjacncicaGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
+		mntmSave.setIcon(new ImageIcon(MenjacnicaGUI.class.getResource("/com/sun/java/swing/plaf/windows/icons/FloppyDrive.gif")));
 		mntmSave.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_S, InputEvent.CTRL_MASK));
 		mnFile.add(mntmSave);
 		
@@ -190,6 +189,11 @@ public class MenjacncicaGUI extends JFrame {
 		addPopup(table, popupMenu);
 		
 		JMenuItem mntmDodajKurs = new JMenuItem("Dodaj kurs");
+		mntmDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dodajKurs();
+			}
+		});
 		popupMenu.add(mntmDodajKurs);
 		
 		JMenuItem mntmIzbrisiKurs = new JMenuItem("Izbrisi kurs");
@@ -209,6 +213,11 @@ public class MenjacncicaGUI extends JFrame {
 		panel.add(btnIzbrisiKurs);
 		
 		JButton btnDodajKurs = new JButton("Dodaj kurs");
+		btnDodajKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dodajKurs();
+			}
+		});
 		btnDodajKurs.setBounds(5, 5, 135, 23);
 		panel.add(btnDodajKurs);
 		
@@ -241,5 +250,14 @@ public class MenjacncicaGUI extends JFrame {
 					System.exit(0);
 				}
 	}
+	public void ispisiValutu(String valuta) {
+		textArea.append(valuta);
 	}
+	
+     private void dodajKurs() {
+		
+		DodajKursGUI dk=new DodajKursGUI(this);
+		dk.setVisible(true);
+	}
+}
 

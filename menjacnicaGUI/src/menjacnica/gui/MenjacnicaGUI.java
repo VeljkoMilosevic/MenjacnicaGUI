@@ -209,6 +209,11 @@ public class MenjacnicaGUI extends JFrame {
 		panel.setLayout(null);
 		
 		JButton btnIzbrisiKurs = new JButton("Izbrisi kurs");
+		btnIzbrisiKurs.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				izbrisiKurs();
+			}
+		});
 		btnIzbrisiKurs.setBounds(5, 39, 135, 23);
 		panel.add(btnIzbrisiKurs);
 		
@@ -259,5 +264,11 @@ public class MenjacnicaGUI extends JFrame {
 		DodajKursGUI dk=new DodajKursGUI(this);
 		dk.setVisible(true);
 	}
+     
+     private void izbrisiKurs() {
+    	 
+    	 ObrisiKursGUI ok = new ObrisiKursGUI(this);
+    	 ok.setVisible(true);
+     }
 }
 

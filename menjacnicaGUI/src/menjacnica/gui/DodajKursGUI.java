@@ -24,10 +24,6 @@ public class DodajKursGUI extends JFrame {
 	private JTextField textField_5;
 	private MenjacnicaGUI menjacnica;
 
-	/**
-	 * Launch the application.
-	 */
-	
 
 	/**
 	 * Create the frame.
@@ -110,10 +106,9 @@ public class DodajKursGUI extends JFrame {
 		JButton btnDodaj = new JButton("Dodaj");
 		btnDodaj.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				String valuta = "Sifra valute:"+textField.getText()+
+				String valuta = "\nDodat kurs: Sifra valute:"+textField.getText()+
 		" Naziv valute:"+textField_1.getText()+" Prodajni kurs:"+textField_2.getText()+" Kupovni kurs:"+textField_3.getText()+
 		" Srednji kurs:" +textField_4.getText()+" Skraceni naziv:"+textField_5.getText();
-				System.out.println(valuta);
 				menjacnica.ispisiValutu(valuta);
 				dispose();
 		}
